@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- hbm:hibernate mapping;在配置文件中首先引入约束：dtd,schema --> 
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 1配置类和表对应 class标签 name属性:实体类全路径 table属性：数据库表名称 -->
+	<class name="day3.Role" table="role">
+		<!-- 2 配置实体类id与表id对应 hibernate要求实体类有一个属性唯一值 bibernate要求表有字段为唯一值 -->
+		<!-- name属性：实体类中id属性名称 colume：生成表的名称 -->
+		<id name="rid" column="rid">
+			<!-- 设置数据库表id增长策略 native:主键及自动增长 -->
+			<generator class="native"></generator>
+		</id>
+		<!-- 其他属性与表对应 -->
+		<property name="rName" column="rName"></property>
+		<property name="memo" column="memo"></property>
+		<!-- 多对多  ,name属性写的set属性名称，table属性是第三张表名称-->
+		<set name="setUser" table="user_role">
+			<!-- 配置 当前映射文件在第三表外键名称-->
+			<key column="roleid"></key>
+			<!-- 用户实体类在第三张表的名称 -->
+			<many-to-many class="day3.User" column="userid"></many-to-many>
+		</set>
+	</class>
+
+</hibernate-mapping> 

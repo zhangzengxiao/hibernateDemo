@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 位置固定：必须在src下 名称固定：必须为hibernate.cfg.xml -->
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<!-- 1配置数据库信息 2配置hibernate信息 3配置映射文件 -->
+	<session-factory>
+		<!-- 1配置数据库信息  -->
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql:///hibernate_1</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">admin</property>
+		<!-- 2配置hibernate信息  -->
+		<!-- 輸出底层sql语句 -->
+		<property name="show_sql">true</property>
+		<!-- 格式化sql语句 -->
+		<property name="format_sql">true</property>
+		<!-- hibernate帮创建表，需要配置 ,若有更新，没有：创建-->
+		<property name="hbm2ddl.auto">update</property>
+		<!-- 配置数据库方言。实现分页 limit，只能使用在mysql里面，oracle使用rownum -->
+<<<<<<< HEAD
+<<<<<<< HEAD
+		<property name="dialect">org.hibernate.dialect.MySQL55Dialect</property>
+		<!-- 配置session与本地线程绑定 --> 
+		<property name="current_session_context_class">thread</property>
+		<!-- 3配置引入映射文件 必须的 -->
+		<mapping resource="./day3/custom.hbm.xml"/>
+		<mapping resource="./day3/lkm.hbm.xml"/>
+		<mapping resource="./day3/user.hbm.xml"/>
+		<mapping resource="./day3/role.hbm.xml"/>
+=======
+		<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+		<!-- 配置session与本地线程绑定 --> 
+		<property name="current_session_context_class">thread</property>
+		<!-- 3配置引入映射文件 必须的 -->
+		<mapping resource="./day1/User.hbm.xml"/>
+		<mapping resource="./day2/User2.hbm.xml"/>
+>>>>>>> branch 'master' of https://github.com/zhangzengxiao/hibernateDemo.git
+=======
+		<property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
+		<!-- 配置session与本地线程绑定 --> 
+		<property name="current_session_context_class">thread</property>
+		<!-- 3配置引入映射文件 必须的 -->
+		<mapping resource="./day1/User.hbm.xml"/>
+		<mapping resource="./day2/User2.hbm.xml"/>
+>>>>>>> refs/remotes/origin/master
+	</session-factory>
+</hibernate-configuration>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- hbm:hibernate mapping;在配置文件中首先引入约束：dtd,schema --> 
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 1配置类和表对应 class标签 name属性:实体类全路径 table属性：数据库表名称 -->
+	<class name="day3.Custom" table="custom">
+		<!-- 2 配置实体类id与表id对应 hibernate要求实体类有一个属性唯一值 bibernate要求表有字段为唯一值 -->
+		<!-- name属性：实体类中id属性名称 colume：生成表的名称 -->
+		<id name="cid" column="cid">
+			<!-- 设置数据库表id增长策略 native:主键及自动增长 -->
+			<generator class="native"></generator>
+		</id>
+		<!-- 其他属性与表对应 -->
+		<property name="custName" column="custName"></property>
+		<property name="custLevel" column="custLevel"></property>
+		<property name="custSource" column="custSource"></property>
+		<property name="custPhone" column="custPhone"></property>
+		<property name="custMobile" column="custMobile"></property>
+		<!--表示多,使用set标签 ,保存与删除,inverse属性，默认不放弃关系维护，true放弃关系维护-->
+		<set name="set" cascade="save-update,delete" inverse="true">
+		<!-- hibernate,双向维护外键，key表示外键 -->
+			<key column="clid"></key>
+			<!-- 多的一方实体类全路径 -->
+			<one-to-many class="day3.LinkMan"/>
+		</set>
+	</class>
+
+</hibernate-mapping> 
